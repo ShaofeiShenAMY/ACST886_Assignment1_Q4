@@ -1,0 +1,147 @@
+---
+title: "ACST886_Assignment1_Q4"
+author: "Shaofei Shen"
+date: "2019/8/22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Q4
+Life A
+```{r}
+library(timevis)
+data <- data.frame(
+  id      = 1:7,
+  content = c("28 Birthday", "PA_1",
+              "1/1 preceding death", "29 Birthday","death","PA_2","30 Birthday"),
+  start   = c("1992-05-16", "1993-07-21",
+              "1994-01-01", "1994-05-16","1994-06-22","1994-07-21","1995-05-16")
+)
+timevis(data)
+```
+```{r}
+library(lubridate)
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1965-05-16", "1994-06-22")
+```
+(a)Age at the next birthdayday at death is 30 years old. Since death occurs at 29 last birthday.
+
+```{r}
+library(lubridate)
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1965-05-16", "1994-01-01")
+```
+(b)Age last birthday at 1st Jan preceiing death is 28 years old. The 1st Jan preceding death is 1/1/1994. The age last birthday on 1/1/1994 is 28
+```{r}
+library(lubridate)
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1965-05-16", "1994-07-21")
+```
+(c)Age at the birthday in the policy year of death is 29 years old. The birthday occurs in current policy year (21/07/1993-21/07/1994) is on 16st May 1994 last birthday is 29 years old.  
+ 
+
+Life B
+```{r}
+data <- data.frame(
+  id      = 1:7,
+  content = c("70 Birthday", "PA_1",
+              "1/1 preceding death", "71 Birthday","death","PA_2","72 Birthday"),
+  start   = c("1992-03-01", "1992-09-23",
+              "1993-01-01", "1993-03-01","1993-07-21","1994-09-23","1994-03-01")
+)
+timevis(data)
+```
+```{r}
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1922-03-01", "1993-07-21")
+```
+(a)Age at the next birthdayday at death is 72 years old. Since death occurs at 71 last birthday.
+```{r}
+library(lubridate)
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1922-03-01", "1993-01-01")
+```
+(b)Age last birthday at 1st Jan preceiing death is 70 years old. The 1st Jan preceding death is 1/1/1993. The age last birthday on 1/1/1993 is 70.
+```{r}
+library(lubridate)
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1922-03-01", "1993-09-23")
+```
+(c)Age at the birthday in the policy year of death is 71 years old. The birthday occurs in current policy year (23/09/1992-23/09/1993) is on 1st March 1993 last birthday is 71 years old.
+
+
+Life C
+```{r}
+data <- data.frame(
+  id      = 1:6,
+  content = c("PA_1", "53 Birthday",
+              "1/1 preceding death", "death","PA_2","54 Birthday"),
+  start   = c("1995-06-02", "1995-09-21",
+              "1996-01-01", "1996-04-29","1996-06-02","1996-09-21")
+)
+timevis(data)
+```
+```{r}
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1942-09-21", "1996-04-29")
+```
+(a)Age at the next birthdayday at death is 54 years old. Since death occurs at 53 last birthday.
+```{r}
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1942-09-21", "1996-01-01")
+```
+(b)Age last birthday at 1st Jan preceiing death is 53 years old. The 1st Jan preceding death is 1/1/1996. The age last birthday on 1/1/1996 is 53.
+
+```{r}
+calc_age <- function(birthDate, refDate = Sys.Date()) {
+    period <- as.period(new_interval(birthDate, refDate),
+                        unit = "year")
+    period$year
+
+}
+calc_age("1942-09-21", "1996-06-02")
+```
+(c)Age at the birthday in the policy year of death is 53 years old. The birthday occurs in current policy year (02/06/1995-02/06/1996) is on 21st Sep 1995 last birthday is 53 years old.
